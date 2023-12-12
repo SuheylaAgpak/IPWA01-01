@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+
+<html lang="de">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title> Kleiderspende Registrierung </title>
+
+  <style>
+    body {
+      display: flex;
+      justify-content: center;
+    }
+
+    .hidden {
+      display: none;
+    }
+
+    #abholungOptions {
+      padding: 20px;
+      border: 1px solid #ccc;
+      margin-top: 20px;
+      background-color: #f9f9f9;
+    }
+
+    #uebergabeOrAbholung {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 15px;
+      box-sizing: border-box;
+    }
+
+    label[for="uebergabeOrAbholung"] {
+      display: block;
+      font-size: 16px;
+      margin-bottom: 8px;
+      color: #333;
+    }
+
+    #abholungOptions p {
+      font-size: 16px;
+      margin-bottom: 15px;
+    }
+
+    #abholungOptions label {
+      display: block;
+      margin-bottom: 5px;
+    }
+
+    #abholungOptions input,
+    #abholungOptions select {
+      width: 100%;
+      padding: 8px;
+      margin-bottom: 10px;
+      box-sizing: border-box;
+    }
+
+    #abholungOptions button {
+      background-color: #4caf50;
+      color: white;
+      padding: 10px;
+      border: none;
+      cursor: pointer;
+    }
+
+    #abholungOptions button:hover {
+      background-color: #45a049;
+    }
+
+    #damenOptionsAbholung,
+    #herrenOptionsAbholung {
+      margin-top: 10px;
+    }
+
+    #damenOptionsAbholung label,
+    #herrenOptionsAbholung label {
+      display: block;
+      margin-bottom: 5px;
+    }
+
+    #damenOptionsAbholung select,
+    #herrenOptionsAbholung select {
+      width: 100%;
+      padding: 8px;
+      margin-bottom: 10px;
+      box-sizing: border-box;
+    }
+
+    #uebergabeOptions {
+      padding: 20px;
+      border: 1px solid #ccc;
+      margin-top: 20px;
+      background-color: #f9f9f9;
+    }
+
+    #uebergabeOptions label {
+      display: block;
+      margin-bottom: 5px;
+    }
+
+    #uebergabeOptions select {
+      width: 100%;
+      padding: 8px;
+      margin-bottom: 10px;
+      box-sizing: border-box;
+    }
+
+    #uebergabeOptions button {
+      background-color: #4caf50;
+      color: white;
+      padding: 10px;
+      border: none;
+      cursor: pointer;
+    }
+
+    #uebergabeOptions button:hover {
+      background-color: #45a049;
+    }
+
+    #damenOptionsUebergabe,
+    #herrenOptionsUebergabe {
+      margin-top: 10px;
+    }
+
+    #damenOptionsUebergabe label,
+    #herrenOptionsUebergabe label {
+      display: block;
+      margin-bottom: 5px;
+    }
+
+    #damenOptionsUebergabe select,
+    #herrenOptionsUebergabe select {
+      width: 100%;
+      padding: 8px;
+      margin-bottom: 10px;
+      box-sizing: border-box;
+    }
+
+    #krisengebietUebergabe {
+      margin-top: 10px;
+    }
+  </style>
+</head>
+
+<body>
+
+  <form id="kleiderspendeForm" onsubmit="submitForm(event)">
+
+    <label for="uebergabeOrAbholung">Art der Übergabe:</label>
+
+    <select id="uebergabeOrAbholung" onchange="optionen()">
+      <option value="uebergabe">Übergabe an der Geschäftsstelle</option>
+      <option value="abholung">Abholung</option>
+    </select>
+
+
+
+    <div id="uebergabeOptions" class="hidden">
+      <div>
+        <label for="genderUebergabe"> Gender für Kleidungsart:</label>
+        <select id="genderUebergabe" onchange="genderoptionenuebergabe()">
+          <option value="Damen">Damen</option>
+          <option value="Herren">Herren</option>
+
+        </select>
+        <div id="damenOptionsUebergabe" class="hidden">
+          <label for="damenOptionsUebergabe">Damen Kleidungsart:</label>
+          <select id="damenOptionsUebergabe" name="damenOptionsUebergabe" required>
+            <option value="Jäcke & Mäntel">Jäcke & Mäntel</option>
+            <option value="Pullover & Strickjacken">Pullover & Strickjacken</option>
+            <option value="Kleider">Kleider</option>
+            <option value="Blusen & Shirts">Blusen & Shirts</option>
+            <option value="Jeans & Hosen">Jeans & Hosen</option>
+            <option value="Bademode">Bademode</option>
+          </select>
+        </div>
+
+        <div id="herrenOptionsUebergabe" class="hidden">
+          <label for="herrenOptionsUebergabe">Herren Kleidungsart:</label>
+          <select id="herrenOptionsUebergabe" name="herrenOptionsUebergabe" required>
+            <option value="Jäcke & Mäntel">Jäcke & Mäntel</option>
+            <option value="Pullover & Strickjacken">Pullover & Strickjacken</option>
+            <option value="Hemden">Hemden</option>
+            <option value="Blusen & Shirts">Blusen & Shirts</option>
+            <option value="Jeans & Hosen">Jeans & Hosen</option>
+            <option value="Bademode">Bademode</option>
+          </select>
+        </div>
+
+      </div>
+
+      <div>
+        <label for="krisengebietUebergabe">Krisengebiet:</label>
+        <select id="krisengebietUebergabe" name="krisengebietUebergabe" required>
+          <option value="Ukraine"> Ukraine </option>
+          <option value="Syrien"> Syrien </option>
+          <option value="Gaza"> Gaza </option>
+          <option value="Afrika"> Afrika </option>
+        </select>
+      </div>
+
+      <button type="submit">Registrieren</button>
+
+    </div>
+
+
+
+    <div id="abholungOptions" class="hidden">
+      <p> Bitte prüfen Sie zunächst Ihre Postleitzahl. Wenn Sie weit weg von uns wohnen, können Sie auch gerne der
+        Geschäftsstelle Kleidung spenden. </p>
+
+      <div>
+        <label for="postleitzahl"> Postleitzahl Prüfen:</label>
+        <input type="text" id="postleitzahl" name="postleitzahl" maxlength="5" required>
+        <button type="button" onclick="postleitzahlPrüfung()"> Prüfen </button>
+      </div>
+
+      <div>
+        <label for="abholadresse">Straße und Hausnummer:</label>
+        <input type="text" id="abholadresse" name="abholadresse" required>
+      </div>
+
+
+      <div>
+        <label for="genderAbholung"> Gender für Kleidungsart:</label>
+        <select id="genderAbholung" onchange="genderoptionenabholung()">
+          <option value="Damen">Damen</option>
+          <option value="Herren">Herren</option>
+        </select>
+
+        <div id="damenOptionsAbholung" class="hidden">
+          <label for="damenOptionsAbholung">Damen Kleidungsart:</label>
+          <select id="damenOptionsAbholung" name="damenOptionsAbholung" required>
+            <option value="Jäcke & Mäntel">Jäcke & Mäntel</option>
+            <option value="Pullover & Strickjacken">Pullover & Strickjacken</option>
+            <option value="Kleider">Kleider</option>
+            <option value="Blusen & Shirts">Blusen & Shirts</option>
+            <option value="Jeans & Hosen">Jeans & Hosen</option>
+            <option value="Bademode">Bademode</option>
+          </select>
+        </div>
+
+        <div id="herrenOptionsAbholung" class="hidden">
+          <label for="herrenOptionsAbholung">Herren Kleidungsart:</label>
+          <select id="herrenOptionsAbholung" name="herrenOptionsAbholung" required>
+            <option value="Jäcke & Mäntel">Jäcke & Mäntel</option>
+            <option value="Pullover & Strickjacken">Pullover & Strickjacken</option>
+            <option value="Hemden">Hemden</option>
+            <option value="Blusen & Shirts">Blusen & Shirts</option>
+            <option value="Jeans & Hosen">Jeans & Hosen</option>
+            <option value="Bademode">Bademode</option>
+          </select>
+        </div>
+      </div>
+
+      <div>
+        <label for="krisengebietAbholung">Krisengebiet:</label>
+        <select id="krisengebietAbholung" name="krisengebietAbholung" required>
+          <option value="Ukraine"> Ukraine </option>
+          <option value="Syrien"> Syrien </option>
+          <option value="Gaza"> Gaza </option>
+          <option value="Afrika"> Afrika </option>
+        </select>
+      </div>
+
+      <button type="submit">Registrieren</button>
+
+    </div>
+
+  </form>
+
+  <script src="path/to/your/script.js" defer></script>
+</body>
+
+</html>
